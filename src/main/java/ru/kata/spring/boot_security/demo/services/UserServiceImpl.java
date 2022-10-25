@@ -31,7 +31,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = findByUsername(username);
         if (user == null) {
@@ -41,7 +40,6 @@ public class UserServiceImpl implements UserService {
                 roleService.mapRolesToAuthorities((List<Role>) user.getRoles()));
     }
 
-    @Transactional
     public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
         User user = findByEmail(email);
         if (user == null) {
